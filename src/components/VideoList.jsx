@@ -1,10 +1,8 @@
 var VideoList = (props) => {
 
-  // console.log("VIDEOLIST Props",props);
-
   return ( <div className="video-list media">
-            { props.videos.map( video =>
-                <VideoListEntry clickHandle={props.clickHandle}  video={ video } />
+            { props.videos.map((video, index, array) =>
+                <VideoListEntry key={index} clickHandle={props.clickHandle}  video={ video } />
               )}    
            </div> );
 }

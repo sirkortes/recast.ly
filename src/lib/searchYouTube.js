@@ -10,6 +10,7 @@ var searchYouTube = (options, callback) => {
     Only GET embeddable videos
     Make sure all the tests for searchYouTube are passing. You can open the tests with npm test
 */
+  console.log("Called options: ",callback)
   $.get(
 
     // url
@@ -20,6 +21,7 @@ var searchYouTube = (options, callback) => {
       part: 'snippet',
       type: 'video',
       videoEmbeddable: true,
+
       key: options.key, 
       q: options.query, 
       maxResults: options.max 
@@ -29,13 +31,14 @@ var searchYouTube = (options, callback) => {
 
   ).done(function(data){
       // success
-      console.log("GET Success data",data);
-      console.log("Data.items",data.items);
       callback(data.items);
+      // return new Promise( (data) => {
+      //   console.log("Promise??");
+      //   return data.items;
+      // });
 
   }).fail(function(error){
       // fail
-      console.log("GET error")
       return error;
   });
 
